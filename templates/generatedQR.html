@@ -1,0 +1,13 @@
+<head>QR Code Generator</head>
+{% block body %}
+ 
+<form action="/generate" method="POST">
+  <p>Enter a name <input type="text" name="text" placeholder="QR"> </p>
+
+<input type="submit" value="Generate">
+</form>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?data={{POST_QR}}&amp;size=100x100" alt="" title="QR Code:" &[parameter-name]=[parameter-wert] /> 
+
+
+{% endblock %}

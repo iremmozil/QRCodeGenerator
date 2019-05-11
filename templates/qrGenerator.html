@@ -1,0 +1,37 @@
+<head>QR Code Generator</head>
+{% block body %}
+ 
+<form action="/generate" method="POST">
+	<p>Enter color <select name="dropDownList"> 
+		<option value="000"> Black </option>
+		<option value="fff"> White </option>
+		<option value="f00"> Red </option>
+		<option value="0f0"> Green </option>
+		<option value="00f"> Blue </option>
+	</select></p>
+	<p>Enter background color <select  name="dropDownList2"> 
+		<option value="fff"> White </option>
+		<option value="000"> Black </option>
+		<option value="f00"> Red </option>
+		<option value="0f0"> Green </option>
+		<option value="00f"> Blue </option>
+	</select> </p>
+  <p>Enter a name <input type="text" name="text" placeholder="QR"> </p>
+
+<input type="submit" value="Generate">
+</form>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?data={{ values[0] }}&amp;size=100x100&color={{ values[1] }}&bgcolor={{ values[2] }}" alt="" title="QR Code:" &[parameter-name]=[parameter-wert]  /> 
+
+
+<form enctype="multipart/form-data" action="http://api.qrserver.com/v1/read-qr-code/" method="POST">
+
+	<input type="hidden" name="MAX_FILE_SIZE" value="1048576" />
+	<!-- The "name" of the input field has to be "file" as it is the name of the POST parameter -->
+	Choose QR code image to read/scan: <input name="file" type="file" />
+	<input type="submit" value="Read QR code" />
+</form>
+
+
+
+{% endblock %}
